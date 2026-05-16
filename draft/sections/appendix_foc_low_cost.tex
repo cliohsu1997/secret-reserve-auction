@@ -1,0 +1,184 @@
+\section{FOC for \texorpdfstring{$\underline{r}^{*}$}{underline r star}}
+\label{app:foc-low}
+
+This appendix derives \eqref{eq:FOC-low-simplified} from \eqref{eq:Pi-low-total}.
+
+\subsection{Derivative of the failure-region term}
+\label{subsec:deriv-fail}
+
+\begin{align}
+  &\frac{d}{d\underline{r}}
+    \left[
+      \delta N (c_H - c_L)
+      \times \left(
+        F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+        - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+      \right)
+      F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-1}
+    \right]
+  \notag\\
+  =&\; \frac{1}{1 - \delta \psi}
+    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-1}
+  \notag\\
+  &\quad + (N-1) \frac{1}{1 - \delta \psi}
+    \left(
+      F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+      - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+    \right)
+    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-2}
+    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+  \notag\\
+  =&\; \frac{1}{1 - \delta \psi}
+    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-2}
+    \Biggl[
+      N F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+      - (N-1) F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+    \Biggr].
+  \label{eq:deriv-fail}
+\end{align}
+
+\subsection{Simplifying the double integral}
+\label{subsec:double-int}
+
+\begin{align}
+  &\int_{\beta^{-1}(\underline{r})}^{1}
+    \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
+    \, dF(v)
+  \notag\\
+  =&\; \left[
+      F(v) \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
+    \right]_{\beta^{-1}(\underline{r})}^{1}
+    - \int_{\beta^{-1}(\underline{r})}^{1}
+      F(v)(v - c_L)\, dF(v)^{N-1}
+  \notag\\
+  =&\; \int_{\underline{r}}^{1} (s - c_L)\, dF(s)^{N-1}
+    - F\bigl(\beta^{-1}(\underline{r})\bigr)
+      \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+        (s - c_L)\, dF(s)^{N-1}
+    - \int_{\beta^{-1}(\underline{r})}^{1}
+      F(v)(v - c_L)\, dF(v)^{N-1}.
+  \label{eq:double-int-parts}
+\end{align}
+
+\paragraph{Derivative of the first term.}
+\begin{equation}
+  \frac{d}{d\underline{r}}
+    \int_{\underline{r}}^{1} (s - c_L)\, dF(s)^{N-1}
+  = -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r}).
+  \label{eq:deriv-int1}
+\end{equation}
+
+\paragraph{Derivative of the second term.}
+\begin{align}
+  &\frac{d}{d\underline{r}}
+    \left(
+      F\bigl(\beta^{-1}(\underline{r})\bigr)
+      \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+        (s - c_L)\, dF(s)^{N-1}
+    \right)
+  \notag\\
+  =&\; f\bigl(\beta^{-1}(\underline{r})\bigr)
+    \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
+    \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+      (s - c_L)\, dF(s)^{N-1}
+  \notag\\
+  &\quad + (N-1) F\bigl(\beta^{-1}(\underline{r})\bigr)
+    \Bigl[
+      \bigl(\beta^{-1}(\underline{r}) - c_L\bigr)
+        F\bigl(\beta^{-1}(\underline{r})\bigr)^{N-2}
+        f\bigl(\beta^{-1}(\underline{r})\bigr)
+        \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
+      - (\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
+    \Bigr].
+  \label{eq:deriv-int2}
+\end{align}
+
+\paragraph{Derivative of the third term.}
+\begin{equation}
+  \frac{d}{d\underline{r}}
+    \int_{\beta^{-1}(\underline{r})}^{1}
+      F(v)(v - c_L)\, dF(v)^{N-1}
+  = -\frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
+    (N-1)\bigl(\beta^{-1}(\underline{r}) - c_L\bigr)
+    F\bigl(\beta^{-1}(\underline{r})\bigr)^{N-1}
+    f\bigl(\beta^{-1}(\underline{r})\bigr).
+  \label{eq:deriv-int3}
+\end{equation}
+
+The derivative of the double integral is therefore
+\begin{equation}
+  -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
+    \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
+  - f\bigl(\beta^{-1}(\underline{r})\bigr)
+    \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
+    \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+      (s - c_L)\, dF(s)^{N-1}.
+  \label{eq:deriv-double-int}
+\end{equation}
+
+\paragraph{Derivative of the bracket term.}
+\begin{align}
+  &\frac{d}{d\underline{r}}
+    \left[
+      (\underline{r} - c_L) F(\underline{r})^{N-1}
+        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
+    \right]
+  \notag\\
+  =&\; \Biggl[
+    \begin{aligned}[t]
+      &F(\underline{r})\bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) \\
+      &\quad + (N-1)(\underline{r} - c_L)
+        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) f(\underline{r}) \\
+      &\quad - (\underline{r} - c_L) F(\underline{r})
+        f\bigl(\beta^{-1}(\underline{r})\bigr)
+        \frac{1}{1 - \delta \psi}
+    \end{aligned}
+  \Biggr]
+  F(\underline{r})^{N-2}.
+  \label{eq:deriv-bracket}
+\end{align}
+
+\subsection{Full FOC and simplification}
+\label{subsec:foc-full}
+
+Taken together, $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ is
+\begin{align}
+  0
+  &= \delta N (c_H - c_L)
+    \frac{1}{1 - \delta \psi}
+    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-2}
+    \notag\\
+  &\quad \times \left[
+      N F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
+      - (N-1) F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+    \right]
+  \notag\\
+  &\quad + N \Biggl[
+    \begin{aligned}[t]
+      &F(\underline{r})\bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) \\
+      &\quad + (N-1)(\underline{r} - c_L)
+        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) f(\underline{r}) \\
+      &\quad - (\underline{r} - c_L) F(\underline{r})
+        f\bigl(\beta^{-1}(\underline{r})\bigr)
+        \frac{1}{1 - \delta \psi}
+    \end{aligned}
+  \Biggr]
+  F(\underline{r})^{N-2}
+  \notag\\
+  &\quad + N \Bigl[
+      -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
+        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
+  \notag\\
+  &\qquad - f\bigl(\beta^{-1}(\underline{r})\bigr)
+      \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
+      \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+        (s - c_L)\, dF(s)^{N-1}
+  \Bigr].
+  \label{eq:FOC-low-full}
+\end{align}
+The $(N-1)(\underline{r}-c_L)$ terms from the bracket and double-integral
+derivatives cancel. Solving the remaining expression for $\underline{r}-c_L$
+gives \eqref{eq:FOC-low-simplified}.

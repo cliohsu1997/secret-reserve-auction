@@ -1,0 +1,34 @@
+\section{Profit for \texorpdfstring{$r>\underline{r}$}{r above underline r}}
+\label{app:profit-above}
+
+Write $v_{\psi}\equiv (c_H-\psi c_L)/(1-\psi)$ and
+$v_{\tilde{\psi}}(v)\equiv
+\bigl((1-\psi\rho(\beta(v)))c_H-\psi(1-\rho(\beta(v)))c_L\bigr)/(1-\psi)$.
+The stage-2 failure block in \eqref{eq:Pi-hat-simplified} is
+\begin{align}
+  &\delta N (c_H - c_L)\,
+    \bigl(
+      F\!\bigl(\beta^{-1}(\underline{r})\bigr) - F(v_{\psi})
+    \bigr)\,
+    F\!\bigl(\beta^{-1}(\underline{r})\bigr)^{N-1}
+  \notag\\
+  &\quad + \delta N (c_H - c_L)
+    \int_{\beta^{-1}(\underline{r})}^{\beta^{-1}(r)}
+      \left(1 - \frac{F\bigl(v_{\tilde{\psi}}(v)\bigr)}{F(v)}\right)
+      \, dF(v)^{N},
+  \label{eq:Pi-hat-initial}
+\end{align}
+plus the stage-1 success terms in \eqref{eq:Pi-hat-simplified}.
+The first line matches \eqref{eq:profit-fail} at $r=\underline{r}$.
+Since
+$\int (1-F_{\tilde{\psi}}/F)\,dF^{N}
+= N\int (F-F_{\tilde{\psi}})F^{N-2}\,dF$,
+\begin{equation*}
+  \int_{\beta^{-1}(\underline{r})}^{\beta^{-1}(r)}
+    \left(1 - \frac{F_{\tilde{\psi}}}{F}\right)\, dF^{N}
+  = F\!\bigl(\beta^{-1}(r)\bigr)^{N}
+    - F\!\bigl(\beta^{-1}(\underline{r})\bigr)^{N}
+    - N \int_{\beta^{-1}(\underline{r})}^{\beta^{-1}(r)}
+      F_{\tilde{\psi}}\,F^{N-2}\, dF,
+\end{equation*}
+which yields the middle terms in \eqref{eq:Pi-hat-simplified}.

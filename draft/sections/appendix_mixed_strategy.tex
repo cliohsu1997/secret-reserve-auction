@@ -1,0 +1,131 @@
+\section{Mixed-strategy indifference and the ODE}
+\label{app:mixed-eqm}
+
+\subsection{Incremental indifference}
+\label{app:indifference}
+
+On $[\underline{r},\bar{r}]$, equilibrium requires
+$\hat{\Pi}(r)=\Pi(\underline{r}^{*})$.
+The $\psi$ block in \eqref{eq:Pi-hat-simplified} does not depend on $r$; with
+$\underline{r}=\underline{r}^{*}$ on path,
+\begin{align}
+  &\delta N (c_H - c_L)
+    \Biggl[
+      F\!\bigl(\beta^{-1}(r)\bigr)^{N}
+      - F\!\bigl(\beta^{-1}(\underline{r}^{*})\bigr)^{N}
+      - N \int_{\beta^{-1}(\underline{r}^{*})}^{\beta^{-1}(r)}
+        F\!\left(
+          \frac{
+            (1 - \psi \rho(\beta(v))) c_H
+            - \psi(1 - \rho(\beta(v))) c_L
+          }{1 - \psi}
+        \right)
+        F(v)^{N-2}\, dF(v)
+    \Biggr]
+  \notag\\
+  &\quad + N \Biggl\{
+    (r - c_L) F(r)^{N-1} \bigl(1 - F(\beta^{-1}(r))\bigr)
+    + \int_{\beta^{-1}(r)}^{1}
+      \int_{r}^{v} (s - c_L)\, dF(s)^{N-1}
+      \, dF(v)
+  \Biggr\}
+  \notag\\
+  &= N \Biggl\{
+    (\underline{r}^{*} - c_L) F(\underline{r}^{*})^{N-1}
+      \bigl(1 - F(\beta^{-1}(\underline{r}^{*}))\bigr)
+    + \int_{\beta^{-1}(\underline{r}^{*})}^{1}
+      \int_{\underline{r}^{*}}^{v} (s - c_L)\, dF(s)^{N-1}
+      \, dF(v)
+  \Biggr\}.
+  \label{eq:indifference}
+\end{align}
+
+\subsection{Derivative and the ODE}
+\label{app:indifference-diff}
+
+On the low branch, $\beta^{-1}(r)=h(r)$. Differentiating
+\eqref{eq:indifference} in $r$ gives
+\begin{align}
+  0
+  &= \delta N (c_H - c_L)
+    \Biggl[
+      F\!\bigl(h(r)\bigr)^{N-1}
+        f\!\bigl(h(r)\bigr)\,h'(r)
+      - F\!\left(
+          \frac{
+            (1 - \psi \rho(r)) c_H
+            - \psi(1 - \rho(r)) c_L
+          }{1 - \psi}
+        \right)
+        F\!\bigl(h(r)\bigr)^{N-2}
+        f\!\bigl(h(r)\bigr)\,h'(r)
+    \Biggr]
+  \notag\\
+  &\quad + F(r)^{N-1} \bigl(1 - F(h(r))\bigr)
+  - (r - c_L) F(r)^{N-1}
+    f\!\bigl(h(r)\bigr)\,h'(r)
+  \notag\\
+  &\quad - f\!\bigl(h(r)\bigr)\,h'(r)
+    \int_{r}^{h(r)} (s - c_L)\, dF(s)^{N-1}.
+  \label{eq:indifference-diff}
+\end{align}
+Collecting terms with $h'(r)$ in \eqref{eq:indifference-diff} and solving gives
+\eqref{eq:ode-h}--\eqref{eq:B-bracket}.
+
+\subsection{Link between \texorpdfstring{$\mathcal{B}$}{B} and the FOC}
+\label{app:B-FOC}
+
+Let $h=\beta^{-1}(r)$ and $v_{\psi}=(c_H-\psi c_L)/(1-\psi)$.
+Integration by parts gives
+$\int_{r}^{h}(s-c_L)\,dF(s)^{N-1}
+=(h-c_L)F(h)^{N-1}-(r-c_L)F(r)^{N-1}-\int_{r}^{h}F(v)^{N-1}\,dv$.
+Multiplying \eqref{eq:FOC-low-simplified} by $F(r)^{N-1}$ and substituting this
+identity yields, whenever $\rho(r)=0$ (so $v_{\rho}(r,h)=v_{\psi}$),
+\begin{equation*}
+  \mathcal{B}(r,h)
+  = (1-\delta\psi)\frac{1-F(h)}{f(h)}F(r)^{N-1}
+  + \delta N(c_H-c_L)\Bigl[
+      (N-1)F(h)^{N-1}-(N-2)F(v_{\psi})\,F(h)^{N-2}
+    \Bigr].
+\end{equation*}
+The first term is positive when $F(h)<1$.
+The second is positive when $(N-1)F(h)>(N-2)F(v_{\psi})$ (e.g.\ when
+$F(h)>F(v_{\psi})$ and $N\ge 2$).
+In particular, if $\underline{r}^{*}$ satisfies
+\eqref{eq:FOC-low-simplified} with $h^{*}=\beta^{-1}(\underline{r}^{*})$ and
+$\rho(\underline{r}^{*})=0$, then $\mathcal{B}(\underline{r}^{*},h^{*})>0$.
+
+\subsection{High reserves}
+\label{app:high-r}
+
+For $r>\beta(v^{*})$, $\beta^{-1}(r)=(r-\delta c_H)/(1-\delta)$ and
+\eqref{eq:indifference-diff} becomes
+\begin{align}
+  0
+  &= \delta N (c_H - c_L)
+    \left(
+      F\!\left(\frac{r - \delta c_H}{1 - \delta}\right)
+      - F\!\left(
+        \frac{
+          (1 - \psi \rho(r)) c_H
+          - \psi(1 - \rho(r)) c_L
+        }{1 - \psi}
+      \right)
+    \right)
+    F\!\left(\frac{r - \delta c_H}{1 - \delta}\right)^{N-2}
+    f\!\left(\frac{r - \delta c_H}{1 - \delta}\right)
+    \frac{1}{1 - \delta}
+  \notag\\
+  &\quad + F(r)^{N-1}
+    \left(1 - F\!\left(\frac{r - \delta c_H}{1 - \delta}\right)\right)
+  \notag\\
+  &\quad - \frac{1}{1 - \delta}
+    f\!\left(\frac{r - \delta c_H}{1 - \delta}\right)
+    \Biggl[
+      \left(\frac{r - \delta c_H}{1 - \delta} - c_L\right)
+        F\!\left(\frac{r - \delta c_H}{1 - \delta}\right)^{N-1}
+      - \int_{r}^{(r - \delta c_H)/(1 - \delta)} F(v)^{N-1}\, dv
+    \Biggr],
+  \label{eq:indifference-high-r}
+\end{align}
+which pins down $\rho(r)$ on the upper part of the support.

@@ -1,0 +1,187 @@
+\section{Low-Cost Seller: Optimal Support and Mixed Strategy}
+\label{sec:low-cost-mixed}
+
+This section completes the low-cost seller's problem.
+Claim~\ref{claim:underline-r-star} pins the equilibrium lower support to the
+reserve that maximizes $\Pi(\cdot)$ in \eqref{eq:Pi-low-total}.
+We characterize that maximizer, extend payoffs to reserves above the lower
+support on the mixing path, and construct the reserve distribution from the
+resulting indifference condition.
+
+\subsection{Optimal lower support}
+\label{sec:foc-low}
+
+The lower support $\underline{r}^{*}$ maximizes $\Pi(\underline{r})$ in
+\eqref{eq:Pi-low-total}.
+Imposing $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ and
+rearranging yields the first-order condition
+\begin{align}
+  \underline{r}^{*} - c_L
+  &= (1 - \delta \psi)\,
+    \frac{
+      1 - F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
+    }{
+      f\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
+    }
+  \label{eq:FOC-low-simplified} \\
+  &\quad + \frac{1}{F(\underline{r}^{*})^{N-1}}
+    \Biggl[
+      \delta N (c_H - c_L)\,
+      F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)^{N-2}
+      \Bigl(
+        N F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
+        - (N-1) F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+      \Bigr)
+    \notag \\
+  &\qquad - \int_{\underline{r}^{*}}^{\beta^{-1}(\underline{r}^{*})}
+      (s - c_L)\, dF(s)^{N-1}
+    \Biggr].
+  \notag
+\end{align}
+The derivation is in Appendix~\ref{app:foc-low}.
+
+\subsection{Profit and indifference on the mixing path}
+\label{sec:profit-above}
+
+In equilibrium the low-cost seller mixes a reserve
+$r\in[\underline{r},\bar{r}]$ with cdf $\rho$, where $\underline{r}$ and
+$\bar{r}$ are the endogenous bounds of the support.
+If the realized reserve exceeds $\underline{r}$, stage~1 failure can occur
+with $v_{\max}$ between $\beta^{-1}(\underline{r})$ and $\beta^{-1}(r)$; bids
+then reveal $\rho(\beta(v))>0$ and beliefs update via
+\eqref{eq:belief-update}.
+On the failure path, beliefs split at $\beta^{-1}(\underline{r})$: the prior
+$\psi$ applies below that threshold and
+$\tilde{\psi}(\beta(v))$ applies above it until $\beta^{-1}(r)$.
+Payoff from announcing $r>\underline{r}$ is
+\begin{align}
+  \hat{\Pi}(r)
+  &= \delta N (c_H - c_L)
+    \Bigl[
+      \Bigl(
+        F\!\bigl(\beta^{-1}(\underline{r})\bigr)
+        - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+      \Bigr)
+      F\!\bigl(\beta^{-1}(\underline{r})\bigr)^{N-1}
+    \notag \\
+  &\quad + F\!\bigl(\beta^{-1}(r)\bigr)^{N}
+      - F\!\bigl(\beta^{-1}(\underline{r})\bigr)^{N}
+      - N \int_{\beta^{-1}(\underline{r})}^{\beta^{-1}(r)}
+        F\!\left(
+          \frac{
+            (1 - \psi \rho(\beta(v))) c_H
+            - \psi(1 - \rho(\beta(v))) c_L
+          }{1 - \psi}
+        \right)
+        \notag \\
+  &\qquad\qquad \times F(v)^{N-2}\, dF(v)
+    \Bigr]
+  \notag \\
+  &\quad + N \Bigl\{
+    (r - c_L) F(r)^{N-1}
+      \bigl(1 - F(\beta^{-1}(r))\bigr)
+    \notag \\
+  &\qquad + \int_{\beta^{-1}(r)}^{1}
+      \int_{r}^{v} (s - c_L)\, dF(s)^{N-1}
+      \, dF(v)
+  \Bigr\}.
+  \label{eq:Pi-hat-simplified}
+\end{align}
+Appendix~\ref{app:profit-above} derives the middle integral.
+When $r=\underline{r}$, the middle terms vanish and
+\eqref{eq:Pi-hat-simplified} coincides with \eqref{eq:Pi-low-total}.
+
+On the equilibrium path $\underline{r}=\underline{r}^{*}$, so the seller is
+indifferent across the support:
+\begin{equation}
+  \hat{\Pi}(r) = \Pi(\underline{r}^{*})
+  \qquad \forall\, r\in[\underline{r},\bar{r}].
+  \label{eq:indifference-condition}
+\end{equation}
+
+\subsection{Construction of the mixing distribution}
+\label{sec:mixed-eqm}
+
+Differentiating \eqref{eq:indifference-condition} on the low branch yields an
+ordinary differential equation for $h(r)\equiv\beta^{-1}(r)$ and the mixing cdf
+$\rho(r)$; the algebra is in Appendix~\ref{app:mixed-eqm}.
+On the low branch, $h(r)$ coincides with \eqref{eq:h-def} at $b=r$:
+\begin{equation}
+  h(r)
+  = \frac{
+      (1 - \psi \rho(r)) r
+      - \delta \psi (1 - \rho(r)) c_L
+    }{
+      1 - \delta \psi - (1 - \delta) \psi \rho(r)
+    },
+  \label{eq:h-from-rho}
+\end{equation}
+with inverse
+\begin{equation}
+  \rho(r)
+  = \frac{
+      -h(r) + r + \delta \psi (h(r) - c_L)
+    }{
+      \psi\bigl(-h(r) + r + \delta (h(r) - c_L)\bigr)
+    }.
+  \label{eq:rho-from-h}
+\end{equation}
+Indifference on the low branch is equivalent to
+\begin{equation}
+  h'(r)
+  = \frac{F(r)^{N-1}\bigl(1 - F(h(r))\bigr)}{f(h(r))}
+    \times \mathcal{B}(r,h(r))^{-1},
+  \label{eq:ode-h}
+\end{equation}
+where $v_{\rho}(r,h)$ is the updated stage-2 cutoff when $\rho(r)>0$,
+\begin{equation*}
+  v_{\rho}(r,h)
+  \equiv
+  \frac{
+    -(h-r)c_L + \delta c_H(h-c_L)
+  }{
+    -(h-r) + \delta(h-c_L)
+  },
+\end{equation*}
+and
+\begin{equation}
+  \mathcal{B}(r,h)
+  = (h - c_L) F(h)^{N-1}
+  - \delta N (c_H - c_L)
+    \bigl(F(h) - F(v_{\rho}(r,h))\bigr)
+    F(h)^{N-2}
+  - \int_{r}^{h} F(v)^{N-1}\, dv.
+  \label{eq:B-bracket}
+\end{equation}
+
+\begin{claim}
+  \label{claim:ode-existence}
+  Suppose $F$ and $f$ are continuous on $[c_L,1]$ with $f>0$.
+  Let $\underline{r}^{*}$ satisfy \eqref{eq:FOC-low-simplified} with
+  $h^{*}=\beta^{-1}(\underline{r}^{*})$ and $\rho(\underline{r}^{*})=0$ on the
+  low branch.
+  Then \eqref{eq:ode-h} admits a local solution
+  $r\mapsto h(r)$ through $\bigl(\underline{r}^{*},h^{*}\bigr)$.
+\end{claim}
+
+\begin{proof}
+The right-hand side of \eqref{eq:ode-h} is continuous near
+$\bigl(\underline{r}^{*},h^{*}\bigr)$ and $f(h^{*})>0$.
+By Peano's theorem, a local solution exists provided
+$\mathcal{B}(\underline{r}^{*},h^{*})>0$.
+At $\rho(\underline{r}^{*})=0$ we have $v_{\rho}(\underline{r}^{*},h^{*})
+=(c_H-\psi c_L)/(1-\psi)$; Appendix~\ref{app:B-FOC} shows that
+\eqref{eq:FOC-low-simplified} implies
+$\mathcal{B}(\underline{r}^{*},h^{*})>0$.
+\end{proof}
+
+A local solution is enough to define a mixed strategy on an interval
+$[\underline{r}^{*},r_1]$: given $h$ solving \eqref{eq:ode-h} on that interval,
+\eqref{eq:rho-from-h} pins down $\rho$, and \eqref{eq:indifference-condition}
+holds by construction on the low branch.
+For $r>\beta(v^{*})$, $\beta^{-1}(r)$ is known in closed form and
+\eqref{eq:indifference-high-r} in Appendix~\ref{app:mixed-eqm} extends $\rho$ on
+the upper part of $[\underline{r},\bar{r}]$.
+Together with $\bar{r}<r_H$ (Claim~\ref{claim:rH-bar}), this yields a mixed
+strategy equilibrium for the low-cost seller with payoff
+$\Pi(\underline{r}^{*})$.

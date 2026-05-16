@@ -1,0 +1,23 @@
+\section{Model Outline}
+\label{sec:model}
+
+\begin{itemize}[leftmargin=*]
+  \item One seller, $N$ bidders.
+  \item Seller's cost is either $c_L$ or $c_H$ with $\Pr(c_L) = \psi$.
+  \item Buyer's value is i.i.d.\ distributed according to some $F$ supported on
+    $[c_L, 1]$, with density $f$.
+  \item \textbf{First stage:} an English auction with initially hidden reserve
+    price, which is revealed conditional on being met.
+  \item \textbf{Second stage:} if the English auction fails, one bidder is
+    randomly drawn to make a TIOLI (take-it-or-leave-it) offer to the seller.
+    An individual bidder is drawn with probability $\delta \le 1/N$.
+\end{itemize}
+
+\paragraph{Notation.}
+$\underline{r}$ and $\bar{r}$: endogenous lower and upper support of the
+low-cost seller's mixed strategy (chosen in equilibrium, not drawn);
+$r_H$: high-cost seller's reserve;
+$\rho \in \Delta[\underline{r}, \bar{r}]$: cdf of the reserve $r$ actually
+played on the path;
+$\beta$: symmetric stage-1 bidding strategy; $\tilde{\psi}$: belief that the
+seller is low-cost.

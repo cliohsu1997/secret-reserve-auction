@@ -1,0 +1,74 @@
+\section{Bidding in the First-Stage English Auction}
+\label{sec:bidding}
+
+Suppose a bidder with value $v$ decides his bid by comparing $v - b$ against
+\begin{equation}
+  \delta \max\left\{
+    v - c_H,\;
+    \frac{\psi\bigl(1 - \rho(b)\bigr)}{1 - \psi \rho(b)}(v - c_L),\;
+    0
+  \right\}.
+  \label{eq:bid-compare}
+\end{equation}
+His bid thus satisfies
+\begin{equation}
+  b
+  = v - \delta \max\left\{
+    v - c_H,\;
+    \frac{\psi\bigl(1 - \rho(b)\bigr)}{1 - \psi \rho(b)}(v - c_L),\;
+    0
+  \right\}.
+  \label{eq:bid-implicit}
+\end{equation}
+
+The right-hand side is weakly decreasing in $b$ and bounded between
+$[v - \delta \max\{v - c_H, \psi(v - c_L)\},\, v - \delta \max\{v - c_H, 0\}]$.
+The bidding strategy $\beta$ given $\rho$ is thus
+\begin{equation}
+  \beta(v)
+  = \begin{cases}
+      v - \delta \psi (v - c_L)
+        & \text{if }
+        v \le \dfrac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}, \\[0.6em]
+      h^{-1}(v)
+        & \text{if }
+        v \in \left(
+          \dfrac{\underline{r} - \delta \psi c_L}{1 - \delta \psi},\;
+          v^{*}
+        \right), \\[0.6em]
+      v - \delta(v - c_H)
+        & \text{if } v \ge v^{*},
+    \end{cases}
+  \label{eq:beta-piecewise}
+\end{equation}
+where
+\begin{equation}
+  h(b)
+  \equiv \frac{
+    (1 - \psi \rho(b)) b - \delta \psi (1 - \rho(b)) c_L
+  }{
+    1 - \delta \psi - (1 - \delta)\psi \rho(b)
+  },
+  \label{eq:h-def}
+\end{equation}
+i.e.\ $h(b)$ solves $v-b=\delta\tilde{\psi}(b)(v-c_L)$ with
+$\tilde{\psi}(b)=\psi(1-\rho(b))/(1-\psi\rho(b))$ from \eqref{eq:belief-update}, and
+$v^{*} \in
+\bigl[
+  (\underline{r} - \delta \psi c_L)/(1 - \delta \psi),\;
+  (c_H - \psi c_L)/(1 - \psi)
+\bigr]$
+is the solution to
+\begin{equation}
+  v - c_H
+  = \frac{
+      \psi\bigl(1 - \rho((1 - \delta)v + \delta c_H)\bigr)
+    }{
+      1 - \psi \rho((1 - \delta)v + \delta c_H)
+    }
+    (v - c_L)
+  \quad\Longleftrightarrow\quad
+  \rho\bigl((1 - \delta)v + \delta c_H\bigr)
+  = \frac{\psi(v - c_L) - (v - c_H)}{\psi(c_H - c_L)}.
+  \label{eq:v-star}
+\end{equation}

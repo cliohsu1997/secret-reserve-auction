@@ -1,0 +1,34 @@
+\section{Case of Public Reserve Price}
+\label{sec:public-reserve}
+
+If the equilibrium is separating, the low-cost seller sets a reserve price given
+by
+\begin{equation}
+  r_L - c_L
+  = (1 - \delta)
+    \frac{
+      1 - F\!\left(\dfrac{r_L - \delta c_L}{1 - \delta}\right)
+    }{
+      f\!\left(\dfrac{r_L - \delta c_L}{1 - \delta}\right)
+    }
+  - \frac{1}{F(r_L)^{N-1}}
+    \int_{r_L}^{(r_L - \delta c_L)/(1 - \delta)}
+      (v - c_L)\, dF(v)^{N-1}.
+  \label{eq:FOC-low-public}
+\end{equation}
+
+whereas the high-cost seller sets reserve price weakly above $r_H$, solution to
+\begin{equation}
+  r_H - c_H
+  = (1 - \delta)
+    \frac{
+      1 - F\!\left(\dfrac{r_H - \delta c_H}{1 - \delta}\right)
+    }{
+      f\!\left(\dfrac{r_H - \delta c_H}{1 - \delta}\right)
+    }
+  - \frac{1}{F(r_H)^{N-1}}
+    \int_{r_H}^{(r_H - \delta c_H)/(1 - \delta)}
+      (v - c_H)\, dF(v)^{N-1},
+  \label{eq:FOC-high-public}
+\end{equation}
+that is enough to deter low-type mimicking.

@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newtheorem{claim}{Claim}
+
+\title{Auction with Secret Reserve Price}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% I. Setup
+\input{sections/01_model}
+
+% II. Equilibrium objects (beliefs and bidding)
+\input{sections/02_preliminary_analysis}
+\input{sections/03_bidding}
+
+% III. Low-cost seller
+\input{sections/04_low_cost_profit}
+\input{sections/05_low_cost_mixed_equilibrium}
+
+% V. Benchmark
+\input{sections/08_public_reserve}
+
+\appendix
+\input{sections/appendix_foc_low_cost}
+\input{sections/appendix_profit_above_reserve}
+\input{sections/appendix_mixed_strategy}
+
+\end{document}
