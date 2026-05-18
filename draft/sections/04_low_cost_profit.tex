@@ -27,8 +27,8 @@ good still costs only $c_L$, so each accepted offer at $c_H$ yields profit
 $c_H-c_L$.
 
 Conditional on stage~1 failure, all values are relatively low---the maximum is
-at most $\beta^{-1}(\underline{r})$---yet a single bidder can still have a high
-enough $v$ to offer $c_H$. Profit in this event is therefore
+at most $\beta^{-1}(\underline{r})$. A selected bidder offers $c_H$ only if his
+own value exceeds the cutoff above. Profit in this event is therefore
 \begin{equation}
   \Pi_{\text{fail}}
   = \delta N (c_H - c_L)
@@ -39,9 +39,44 @@ enough $v$ to offer $c_H$. Profit in this event is therefore
     \right),
   \label{eq:profit-fail-cond}
 \end{equation}
-Write $v_{\psi}\equiv (c_H-\psi c_L)/(1-\psi)$ and
-$z\equiv \beta^{-1}(\underline{r})=(\underline{r}-\delta\psi c_L)/(1-\delta\psi)$.
-With i.i.d.\ values, \eqref{eq:profit-fail-cond} equals
+Write
+\[
+  v_{\psi}\equiv \frac{c_H-\psi c_L}{1-\psi},
+  \qquad
+  z\equiv \beta^{-1}(\underline{r})
+  = \frac{\underline{r}-\delta\psi c_L}{1-\delta\psi}.
+\]
+The failure payoff is positive only when the failure-region upper bound $z$
+exceeds the stage-2 offer cutoff $v_{\psi}$.  The threshold reserve solves
+$z=v_{\psi}$:
+\begin{equation}
+  \underline{r}_0
+  \equiv
+  \delta\psi c_L
+  + (1-\delta\psi)\frac{c_H-\psi c_L}{1-\psi}
+  =
+  \frac{(1-\delta\psi)c_H-\psi(1-\delta)c_L}{1-\psi}.
+  \label{eq:failure-positive-cutoff}
+\end{equation}
+\noindent
+\textit{Remark.}
+The cutoff $\underline{r}_0$ need not lie below the top of the value support.
+Economically, if buyers place sufficiently high prior probability on the
+low-cost type, their cutoff for offering $c_H$ is so high that even the largest
+feasible failed-auction value may not trigger a $c_H$ offer.
+Indeed,
+\begin{equation*}
+  \underline{r}_0<1
+  \quad\Longleftrightarrow\quad
+  \psi
+  <
+  \frac{1-c_H}{1-c_L-\delta(c_H-c_L)}.
+\end{equation*}
+If this condition fails, then $\underline{r}_0\ge1$ and the failure-stage
+payoff is zero for every feasible reserve $\underline{r}\le1$.
+Thus $\Pi_{\text{fail}}=0$ for $\underline{r}\le \underline{r}_0$.
+For $\underline{r}>\underline{r}_0$, i.i.d.\ values and
+\eqref{eq:fail-prob} give
 \begin{equation}
   \Pi_{\text{fail}}
   = \delta N (c_H - c_L)\,
@@ -54,12 +89,10 @@ With i.i.d.\ values, \eqref{eq:profit-fail-cond} equals
     F(z)^{N-1}.
   \label{eq:profit-fail}
 \end{equation}
-The second line uses \eqref{eq:fail-prob} for $\Pr(\text{fail})=F(z)^{N}$.
 Raising $\underline{r}$ makes stage~1 failure more likely because
 $F\bigl((\underline{r}-\delta\psi c_L)/(1-\delta\psi)\bigr)^{N}$ increases.
-The bracket in \eqref{eq:profit-fail} also increases in $\underline{r}$: conditional
-on failure, a higher reserve means the surviving values can be larger, so it is
-more likely that some bidder still offers $c_H$ in stage~2.
+Above $\underline{r}_0$, it also makes it more likely that a selected bidder has
+value above the stage-2 offer cutoff.
 
 \subsection{When the auction succeeds}
 \label{subsec:profit-success}
@@ -109,11 +142,11 @@ value $s$ (the usual second-price payment in an English auction).
 \subsection{Total profit and \texorpdfstring{$\underline{r}^{*}$}{underline r star}}
 \label{subsec:total-profit}
 
-Taken together, the low-type's profit is
+Taken together, the low-type's profit is, with $[x]_+\equiv\max\{x,0\}$,
 \begin{align}
   \Pi(\underline{r})
   &\equiv \delta N (c_H - c_L)\,
-    \bigl(F(z) - F(v_{\psi})\bigr)\,F(z)^{N-1}
+    \bigl[F(z) - F(v_{\psi})\bigr]_+\,F(z)^{N-1}
   \notag\\
   &\quad + N \Biggl\{
     (\underline{r} - c_L) F(\underline{r})^{N-1}

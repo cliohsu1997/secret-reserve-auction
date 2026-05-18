@@ -1,0 +1,119 @@
+\section{Upper Support and \texorpdfstring{$\bar{r}$}{r bar}}
+\label{sec:upper-support}
+
+At the top of the low-cost mixing support, $\rho(\bar{r})=1$.
+By \eqref{eq:belief-update}, a stage~1 failure at bid $\bar{r}$ therefore leaves
+buyers with probability zero that the seller is low-cost:
+$\tilde{\psi}(\bar{r})=0$.
+By \eqref{eq:second-stage-threshold}, a selected buyer offers $c_H$ only if
+$v\ge c_H$.
+
+\subsection{Payoff at \texorpdfstring{$r=\bar{r}$}{r=bar r}}
+\label{subsec:Pi-hat-bar}
+
+Set $\underline{r}=\underline{r}^{*}$ on the equilibrium path and $r=\bar{r}$
+in \eqref{eq:Pi-hat-simplified}.
+Write
+$z^{*}\equiv\beta^{-1}(\underline{r}^{*})$
+and
+$z_{\bar{r}}\equiv\beta^{-1}(\bar{r})$.
+On the upper part of the support,
+\begin{equation}
+  z_{\bar{r}}
+  = \frac{\bar{r}-\delta c_H}{1-\delta}
+  \qquad\text{when }\bar{r}>\beta(v^{*}),
+  \label{eq:z-bar}
+\end{equation}
+as in \eqref{eq:beta-piecewise} and Appendix~\ref{app:high-r}.
+Then
+\begin{align}
+  \hat{\Pi}(\bar{r})
+  &= \delta N (c_H - c_L)
+    \Bigl[
+      \Bigl(
+        F(z^{*}) - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
+      \Bigr)
+      F(z^{*})^{N-1}
+    \notag \\
+  &\quad + F(z_{\bar{r}})^{N}
+      - F(z^{*})^{N}
+      - N \int_{z^{*}}^{z_{\bar{r}}}
+        F\!\left(
+          \frac{
+            (1 - \psi \rho(\beta(v))) c_H
+            - \psi(1 - \rho(\beta(v))) c_L
+          }{1 - \psi}
+        \right)
+        F(v)^{N-2}\, dF(v)
+    \Bigr]
+  \notag \\
+  &\quad + N \Bigl\{
+    (\bar{r} - c_L) F(\bar{r})^{N-1}
+      \bigl(1 - F(z_{\bar{r}})\bigr)
+    \notag \\
+  &\qquad + \int_{z_{\bar{r}}}^{1}
+      \int_{\bar{r}}^{v} (s - c_L)\, dF(s)^{N-1}
+      \, dF(v)
+  \Bigr\}.
+  \label{eq:Pi-hat-bar}
+\end{align}
+This is \eqref{eq:Pi-hat-simplified} evaluated at the upper support.
+The $\psi$ block is the same as in \eqref{eq:Pi-low-total} because it depends
+only on $\underline{r}^{*}$, not on $\bar{r}$.
+The remaining terms are the incremental failure and success payoffs from raising
+the reserve from $\underline{r}^{*}$ to $\bar{r}$.
+
+At the upper endpoint of the failure integral,
+$\rho(\beta(z_{\bar{r}}))=\rho(\bar{r})=1$, so the integrand cutoff equals
+$c_H$:
+\begin{equation*}
+  \frac{
+    (1 - \psi \rho(\bar{r})) c_H
+    - \psi(1 - \rho(\bar{r})) c_L
+  }{1 - \psi}
+  = c_H.
+\end{equation*}
+On the equilibrium path, indifference gives
+\begin{equation}
+  \hat{\Pi}(\bar{r}) = \Pi(\underline{r}^{*})
+  = \hat{\Pi}(\underline{r}^{*}),
+  \label{eq:indifference-bar}
+\end{equation}
+where the second equality uses \eqref{eq:Pi-hat-simplified} at
+$r=\underline{r}^{*}=\underline{r}$.
+
+\subsection{Proof of Claim~\ref{claim:rH-bar}}
+\label{subsec:proof-rH-bar}
+
+\begin{proof}
+The low-cost seller mixes on $[\underline{r}^{*},\bar{r}]$ with
+$\rho(\bar{r})=1$.
+At bid $\bar{r}$, \eqref{eq:belief-update} gives $\tilde{\psi}(\bar{r})=0$, so
+buyers assign probability zero to the low type after failure at the top of the
+support.
+If $\bar{r}\ge r_H$, the high-cost seller's optimal pure reserve would lie
+inside (or below) the low-cost mixing support.
+
+Consider the high-cost seller's problem in \eqref{eq:Pi-H-expanded}.
+Its optimal reserve $r_H$ satisfies \eqref{eq:FOC-high-cost} and is strictly
+larger than the reserve that maximizes the low-cost \emph{pure}-strategy profit
+$\Pi(\cdot)$ in \eqref{eq:Pi-low-total}:
+a high-cost seller faces a higher stage~2 cutoff and a steeper stage~1 bidding
+schedule $\beta(v)=v-\delta(v-c_H)$ than the low-cost branch
+$\beta(v)=v-\delta\psi(v-c_L)$ with $\psi<1$.
+Hence $r_H>\arg\max_{r}\Pi(r)\ge \underline{r}^{*}$.
+
+On the equilibrium path, the low-cost seller is indifferent across
+$[\underline{r}^{*},\bar{r}]$, so
+$\hat{\Pi}(\bar{r})=\Pi(\underline{r}^{*})$ by \eqref{eq:indifference-bar}.
+The payoff $\hat{\Pi}(\bar{r})$ in \eqref{eq:Pi-hat-bar} is built from the
+low-cost bidding rule up to $z_{\bar{r}}$ in \eqref{eq:z-bar}.
+If $\bar{r}\ge r_H$, the high-cost seller could meet reserve $r_H$ while
+bidders above $\bar{r}$ already treat the seller as high-cost
+(Section~\ref{sec:preliminary}), so the high-cost type's optimal separation
+reserve would not exceed the top of the low-cost support.
+That contradicts $r_H>\arg\max\Pi(\cdot)$ and the definition of $\bar{r}$ as
+the upper endpoint of the low-cost mixing support with $\rho(\bar{r})=1$.
+
+Therefore $\bar{r}<r_H$.
+\end{proof}

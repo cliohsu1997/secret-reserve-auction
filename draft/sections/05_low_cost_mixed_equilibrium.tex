@@ -13,8 +13,12 @@ resulting indifference condition.
 
 The lower support $\underline{r}^{*}$ maximizes $\Pi(\underline{r})$ in
 \eqref{eq:Pi-low-total}.
-Imposing $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ and
-rearranging yields the first-order condition
+For an interior maximizer with
+$\underline{r}^{*}>\underline{r}_0$ from
+\eqref{eq:failure-positive-cutoff}, the positive part in
+\eqref{eq:Pi-low-total} is active.
+Imposing $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ and rearranging
+yields the first-order condition
 \begin{align}
   \underline{r}^{*} - c_L
   &= (1 - \delta \psi)\,
@@ -26,7 +30,7 @@ rearranging yields the first-order condition
   \label{eq:FOC-low-simplified} \\
   &\quad + \frac{1}{F(\underline{r}^{*})^{N-1}}
     \Biggl[
-      \delta N (c_H - c_L)\,
+      \delta (c_H - c_L)\,
       F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)^{N-2}
       \Bigl(
         N F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
@@ -133,46 +137,48 @@ Indifference on the low branch is equivalent to
     \times \mathcal{B}(r,h(r))^{-1},
   \label{eq:ode-h}
 \end{equation}
-where $v_{\rho}(r,h)$ is the updated stage-2 cutoff when $\rho(r)>0$,
-\begin{equation*}
-  v_{\rho}(r,h)
-  \equiv
-  \frac{
-    -(h-r)c_L + \delta c_H(h-c_L)
-  }{
-    -(h-r) + \delta(h-c_L)
-  },
-\end{equation*}
-and
+where
 \begin{equation}
+  \begin{aligned}
   \mathcal{B}(r,h)
-  = (h - c_L) F(h)^{N-1}
-  - \delta N (c_H - c_L)
-    \bigl(F(h) - F(v_{\rho}(r,h))\bigr)
-    F(h)^{N-2}
-  - \int_{r}^{h} F(v)^{N-1}\, dv.
+  &= (h - c_L) F(h)^{N-1}
+    - \int_{r}^{h} F(v)^{N-1}\, dv \\
+  &\quad - \delta N (c_H - c_L)
+    \left[
+      F(h)
+      - F\!\left(
+        \frac{
+          (1-\psi\rho(r))c_H-\psi(1-\rho(r))c_L
+        }{1-\psi}
+      \right)
+    \right]
+    F(h)^{N-2}.
+  \end{aligned}
   \label{eq:B-bracket}
 \end{equation}
 
 \begin{claim}
   \label{claim:ode-existence}
   Suppose $F$ and $f$ are continuous on $[c_L,1]$ with $f>0$.
-  Let $\underline{r}^{*}$ satisfy \eqref{eq:FOC-low-simplified} with
-  $h^{*}=\beta^{-1}(\underline{r}^{*})$ and $\rho(\underline{r}^{*})=0$ on the
-  low branch.
+  Let $\underline{r}^{*}$ satisfy \eqref{eq:FOC-low-simplified}, and set
+  \[
+    h^{*}
+    = \frac{\underline{r}^{*}-\delta\psi c_L}{1-\delta\psi},
+  \]
+  the inverse of the first bidding branch in \eqref{eq:beta-piecewise}.
   Then \eqref{eq:ode-h} admits a local solution
   $r\mapsto h(r)$ through $\bigl(\underline{r}^{*},h^{*}\bigr)$.
 \end{claim}
 
 \begin{proof}
-The right-hand side of \eqref{eq:ode-h} is continuous near
-$\bigl(\underline{r}^{*},h^{*}\bigr)$ and $f(h^{*})>0$.
-By Peano's theorem, a local solution exists provided
-$\mathcal{B}(\underline{r}^{*},h^{*})>0$.
-At $\rho(\underline{r}^{*})=0$ we have $v_{\rho}(\underline{r}^{*},h^{*})
-=(c_H-\psi c_L)/(1-\psi)$; Appendix~\ref{app:B-FOC} shows that
-\eqref{eq:FOC-low-simplified} implies
-$\mathcal{B}(\underline{r}^{*},h^{*})>0$.
+At the lower end of the support, $\rho(\underline{r}^{*})=0$.
+Hence buyers use the prior belief $\psi$, bid according to
+$v-\delta\psi(v-c_L)$, and the inverse bid is the displayed $h^{*}$.
+Appendix~\ref{app:B-FOC} shows that the denominator
+$\mathcal{B}(\underline{r}^{*},h^{*})$ is strictly positive.
+The right-hand side of \eqref{eq:ode-h} is therefore continuous around
+$\bigl(\underline{r}^{*},h^{*}\bigr)$.
+Peano's theorem then gives a local solution.
 \end{proof}
 
 A local solution is enough to define a mixed strategy on an interval
