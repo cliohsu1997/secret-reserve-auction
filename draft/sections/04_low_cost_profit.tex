@@ -8,123 +8,154 @@ price $\underline{r}$.
 \label{subsec:profit-fail}
 
 The English auction \emph{fails} when every bidder stops before the reserve
-$\underline{r}$ is met, so the sale moves to stage~2. With symmetric bidding
-$\beta$, that requires all $N$ values to satisfy $\beta(v)\le \underline{r}$,
-which occurs with probability
+$\underline{r}$ is met, so the sale moves to stage~2.
+On the low bidding branch, failure is equivalent to $v_{\max}\le z$ with
 \begin{equation}
-  \Pr(\text{fail})
-  = F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N}.
-  \label{eq:fail-prob}
-\end{equation}
-The seller may still earn revenue in stage~2. One bidder is drawn to make a
-take-it-or-leave-it offer with probability $\delta$; across $N$ bidders this
-contributes a factor $\delta N$. The selected buyer is unsure of the seller's
-cost and, by \eqref{eq:second-stage-threshold}, offers $c_H$ only if
-$v-c_H$ beats the expected gain from dealing with a low-cost seller. In the
-expression below we use the cutoff implied by prior belief $\psi$,
-$v \ge (c_H-\psi c_L)/(1-\psi)$. If the seller is in fact low-cost, serving the
-good still costs only $c_L$, so each accepted offer at $c_H$ yields profit
-$c_H-c_L$.
-
-Conditional on stage~1 failure, all values are relatively low---the maximum is
-at most $\beta^{-1}(\underline{r})$. A selected bidder offers $c_H$ only if his
-own value exceeds the cutoff above. Profit in this event is therefore
-\begin{equation}
-  \Pi_{\text{fail}}
-  = \delta N (c_H - c_L)
-    \times \Pr\!\left(
-      v_1 \ge \frac{c_H - \psi c_L}{1 - \psi}
-      \;\middle|\;
-      v_{\max} \le \beta^{-1}(\underline{r})
-    \right),
-  \label{eq:profit-fail-cond}
-\end{equation}
-Write
-\[
-  v_{\psi}\equiv \frac{c_H-\psi c_L}{1-\psi},
-  \qquad
-  z\equiv \beta^{-1}(\underline{r})
+  z
+  \equiv \beta^{-1}(\underline{r})
   = \frac{\underline{r}-\delta\psi c_L}{1-\delta\psi}.
-\]
-By \eqref{eq:second-stage-threshold}, a selected bidder offers $c_H$ only if
-$v\ge v_{\psi}$.
-Conditional on $v_{\max}\le z$, this requires $z\ge v_{\psi}$, so
-\eqref{eq:profit-fail-cond} is positive if and only if
-\begin{equation}
-  z>v_{\psi}
-  \quad\Longleftrightarrow\quad
-  F(z)>F(v_{\psi})
-  \quad\Longleftrightarrow\quad
-  1-\frac{F(v_{\psi})}{F(z)}>0.
-  \label{eq:z-gt-vpsi}
+  \label{eq:z-def}
 \end{equation}
-The reserve threshold that makes $z=v_{\psi}$ is
+This event has probability $\Pr(\text{fail})=F(z)^{N}$.
+
+The seller may still earn positive profit in stage~2 if the selected
+buyer makes a $c_H$ offer; each accepted $c_H$ offer yields profit $c_H-c_L$.
+When the auction fails before $\underline{r}$, this event reveals no information
+about the seller's type, so the posterior belief that the seller is low-cost
+remains $\psi$.
+By \eqref{eq:second-stage-threshold} with this posterior, a buyer with value $v$
+offers $c_H$ in stage~2 if and only if $v\ge v_{\psi}$, where
+\begin{equation}
+  v_{\psi}
+  \equiv \frac{c_H-\psi c_L}{1-\psi}.
+  \label{eq:v-psi-def}
+\end{equation}
+The subscript records that here $\tilde{\psi}=\psi$.
+Since failure implies $v_{\max}\le z$, the seller earns this margin only when
+\[
+  v_{\psi} < v_{\max} < z
+  \qquad\text{(equivalently } z > v_{\max} > v_{\psi}\text{)}.
+\]
+Let $\underline{r}_0$ denote the reserve at which $z=v_{\psi}$,
 \begin{equation}
   \underline{r}_0
   \equiv
   \delta\psi c_L
   + (1-\delta\psi)\frac{c_H-\psi c_L}{1-\psi}
   =
-  \frac{(1-\delta\psi)c_H-\psi(1-\delta)c_L}{1-\psi},
-  \qquad
-  \text{so}\quad
-  \underline{r}>\underline{r}_0
-  \quad\Longleftrightarrow\quad
-  z>v_{\psi}.
+  \frac{(1-\delta\psi)c_H-\psi(1-\delta)c_L}{1-\psi}.
   \label{eq:failure-positive-cutoff}
 \end{equation}
-When $\underline{r}>\underline{r}_0$, failure leaves some values in
-$[v_{\psi},z]$, so a selected bidder may have $v\ge v_{\psi}$ and offer $c_H$,
-and stage-2 revenue is possible.\footnote{%
+Since $z$ is increasing in $\underline{r}$, $v_{\psi}<v_{\max}<z$ is possible if
+and only if $\underline{r}>\underline{r}_0$; otherwise $\Pi_{\text{fail}}=0$.\footnote{%
   The cutoff $\underline{r}_0$ need not lie below the top of the value support.
   If buyers place sufficiently high prior probability on the low-cost type,
-  their cutoff for offering $c_H$ is so high that even the largest feasible
-  failed-auction value may not trigger a $c_H$ offer.
+  $v_{\psi}$ is so large that even the largest feasible $v_{\max}$ on a failure
+  path need not warrant a $c_H$ offer.
   Indeed,
   $\underline{r}_0<1$ if and only if
   $\psi<(1-c_H)/\bigl(1-c_L-\delta(c_H-c_L)\bigr)$;
   if not, then $\underline{r}_0\ge1$ and $\Pi_{\text{fail}}=0$ for every feasible
   reserve $\underline{r}\le1$.}
-Thus $\Pi_{\text{fail}}=0$ for $\underline{r}\le \underline{r}_0$.
-For $\underline{r}>\underline{r}_0$, i.i.d.\ values and
-\eqref{eq:fail-prob} give
+
+For $\underline{r}>\underline{r}_0$, one bidder is drawn to make a
+take-it-or-leave-it offer with probability $\delta$.
+Here we distinguish between the highest bidder and the others, because stage~1
+bidding reveals $v_{\max}$, which the seller observes, but not the other bidders'
+values.
+
+If the selected bidder is the highest, his value
+equals $v_{\max}$, which the seller already knows, and if $v_{\max}\ge v_{\psi}$
+he offers $c_H$.
+This contributes
+\begin{equation}
+  \Pi_{\text{fail}}^{(1)}
+  = \delta (c_H - c_L)
+    \int_{v_{\psi}}^{z} dF(v)^{N}.
+  \label{eq:profit-fail-max}
+\end{equation}
+If the selected bidder is not the highest, there are $N-1$ symmetric
+possibilities.
+The seller still knows $v_{\max}$ but not the selected value $v$, and a non-max
+bidder with value $v$ offers $c_H$ with probability $1-F(v_{\psi})/F(v)$.
+This contributes
+\begin{equation}
+  \Pi_{\text{fail}}^{(2)}
+  = \delta (N-1) (c_H - c_L)
+    \int_{v_{\psi}}^{z}
+      \left(1 - \frac{F(v_{\psi})}{F(v)}\right)\, dF(v)^{N}.
+  \label{eq:profit-fail-nonmax}
+\end{equation}
+Adding \eqref{eq:profit-fail-max} and \eqref{eq:profit-fail-nonmax}, and factoring
+out $\delta(c_H-c_L)$,
+\begin{equation}
+  \Pi_{\text{fail}}
+  = \Pi_{\text{fail}}^{(1)} + \Pi_{\text{fail}}^{(2)}
+  = \delta (c_H - c_L)
+    \Biggl[
+      \int_{v_{\psi}}^{z} dF(v)^{N}
+      + (N-1)
+      \int_{v_{\psi}}^{z}
+        \left(1 - \frac{F(v_{\psi})}{F(v)}\right)\, dF(v)^{N}
+    \Biggr].
+  \label{eq:profit-fail}
+\end{equation}
+The first integral in \eqref{eq:profit-fail} equals
+$F(z)^{N}-F(v_{\psi})^{N}$.
+For $N\ge 2$, integration by parts on the second integral gives
+\begin{align}
+  \int_{v_{\psi}}^{z}
+    \left(1 - \frac{F(v_{\psi})}{F(v)}\right)\, dF(v)^{N}
+  &= \left(1 - \frac{F(v_{\psi})}{F(z)}\right) F(z)^{N}
+    - \frac{F(v_{\psi})}{N-1}
+      \bigl(F(z)^{N-1} - F(v_{\psi})^{N-1}\bigr),
+  \label{eq:profit-fail-nonmax-int}
+\end{align}
+since $\int_{v_{\psi}}^{z} F(v)^{N-2} f(v)\, dv
+=\bigl(F(z)^{N-1}-F(v_{\psi})^{N-1}\bigr)/(N-1)$.
+Adding the two integrals in \eqref{eq:profit-fail},
+\begin{align}
+  &\int_{v_{\psi}}^{z} dF(v)^{N}
+    + (N-1)
+    \int_{v_{\psi}}^{z}
+      \left(1 - \frac{F(v_{\psi})}{F(v)}\right)\, dF(v)^{N}
+  \notag\\
+  &= F(z)^{N} - F(v_{\psi})^{N}
+    + (N-1)\left(1 - \frac{F(v_{\psi})}{F(z)}\right) F(z)^{N}
+    - F(v_{\psi})\bigl(F(z)^{N-1} - F(v_{\psi})^{N-1}\bigr)
+  \notag\\
+  &= N\bigl(F(z) - F(v_{\psi})\bigr) F(z)^{N-1},
+  \label{eq:profit-fail-bracket}
+\end{align}
+where the second line uses $F(v_{\psi})^{N}=F(v_{\psi})F(v_{\psi})^{N-1}$.
+When $N=1$, only the first integral enters and
+\eqref{eq:profit-fail-bracket} still holds.
+Substituting into \eqref{eq:profit-fail},
 \begin{equation}
   \Pi_{\text{fail}}
   = \delta N (c_H - c_L)\,
-    \Pr(\text{fail})
-    \left(
-      1 - \frac{F(v_{\psi})}{F(z)}
-    \right)
-  = \delta N (c_H - c_L)\,
     \bigl(F(z) - F(v_{\psi})\bigr)\,
     F(z)^{N-1}.
-  \label{eq:profit-fail}
+  \label{eq:profit-fail-closed}
 \end{equation}
-Raising $\underline{r}$ makes stage~1 failure more likely because
-$F(z)^{N}$ increases, and for $\underline{r}>\underline{r}_0$ it also raises
-the probability in \eqref{eq:profit-fail-cond} that a selected bidder offers
-$c_H$.
+Raising $\underline{r}$ makes stage~1 failure more likely because $F(z)^{N}$
+increases, and for $\underline{r}>\underline{r}_0$ it also enlarges
+$[v_{\psi},z]$ and raises the non-max offer probability
+$1-F(v_{\psi})/F(v)$.
 
 \subsection{When the auction succeeds}
 \label{subsec:profit-success}
 
-The auction \emph{succeeds} when at least one bidder is willing to push the bid
-above $\underline{r}$, so the reserve is met and the object is sold in stage~1.
-This requires $v_{\max} > \beta^{-1}(\underline{r})$, which occurs with probability
-$1 - F\bigl((\underline{r}-\delta\psi c_L)/(1-\delta\psi)\bigr)^{N}$.
-Once the reserve is met, bidders bid truthfully in the English auction. The
-bidder with the highest value $v$ wins. The runner-up has the second-highest
-value $s$; the winner pays $\max\{\underline{r}, s\}$ (the reserve if
-$s<\underline{r}$, otherwise $s$). The seller's margin is therefore
-$\max\{\underline{r}, s\} - c_L$. On the low bidding branch,
-$\beta^{-1}(\underline{r})=(\underline{r}-\delta\psi c_L)/(1-\delta\psi)>\underline{r}$
-when $\underline{r}>c_L$, so every winning type satisfies $v>\underline{r}$ and
-the payment splits into two cases: the winner pays $\underline{r}$ when
-$s<\underline{r}$, and pays $s$ when $s>\underline{r}$. Averaging over the
-winner's type $v$ and the second-order statistic $s$ gives
+The auction \emph{succeeds} when the reserve is met in stage~1, so the sale
+does not move to stage~2.
+This is equivalent to $v_{\max}>z$, with probability $1-F(z)^{N}$.
+Once the reserve is met, bidders bid truthfully in the English auction.
+The highest-value bidder $v$ wins and pays $\max\{\underline{r},s\}$, so the
+seller's margin is $\max\{\underline{r}, s\} - c_L$.
+Averaging over the winner's value $v\ge z$ and the runner-up value $s\le v$ gives
 \begin{equation}
   \Pi_{\text{succ}}
-  = \int_{\beta^{-1}(\underline{r})}^{1}
+  = \int_{z}^{1}
     \int_{c_L}^{v}
       \bigl(\max\{\underline{r}, s\} - c_L\bigr)
       \, d\!\left(\frac{F(s)}{F(v)}\right)^{N-1}
@@ -132,14 +163,14 @@ winner's type $v$ and the second-order statistic $s$ gives
   \label{eq:profit-success-int}
 \end{equation}
 where $d(F(s)/F(v))^{N-1}$ is the distribution of $s$ conditional on
-$v_{\max}=v$, and $dF(v)^{N}=N F(v)^{N-1}f(v)\,dv$ is the density of the
-maximum. Integrating by parts yields the equivalent form
+$v_{\max}=v$.
+Integrating by parts yields the equivalent form
 \begin{equation}
   \Pi_{\text{succ}}
   = N \Biggl\{
     (\underline{r} - c_L) F(\underline{r})^{N-1}
-      \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
-    + \int_{\beta^{-1}(\underline{r})}^{1}
+      \bigl(1 - F(z)\bigr)
+    + \int_{z}^{1}
       \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
       \, dF(v)
   \Biggr\}.
@@ -153,25 +184,23 @@ value $s$ (the usual second-price payment in an English auction).
 \subsection{Total profit and \texorpdfstring{$\underline{r}^{*}$}{underline r star}}
 \label{subsec:total-profit}
 
-Taken together, the low-type's profit is, with $[x]_+\equiv\max\{x,0\}$,
-\begin{align}
+Total profit is
+\begin{equation}
   \Pi(\underline{r})
-  &\equiv \delta N (c_H - c_L)\,
-    \bigl[F(z) - F(v_{\psi})\bigr]_+\,F(z)^{N-1}
-  \notag\\
-  &\quad + N \Biggl\{
-    (\underline{r} - c_L) F(\underline{r})^{N-1}
-      \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
-    + \int_{\beta^{-1}(\underline{r})}^{1}
-      \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
-      \, dF(v)
-  \Biggr\}.
+  = \mathbf{1}\{\underline{r}>\underline{r}_0\}\,
+    \delta N (c_H - c_L)\,
+    \bigl(F(z) - F(v_{\psi})\bigr)\,
+    F(z)^{N-1}
+    + \Pi_{\text{succ}},
   \label{eq:Pi-low-total}
-\end{align}
-The formula $\Pi(r)$ attributes stage-2 payoffs using the prior $\psi$ on every
-failure path. That matches announced reserves on the equilibrium path up to the
-lower support, but not when the seller raises the reserve above $\underline{r}$
-and failure reveals bids above $\underline{r}$.
+\end{equation}
+The indicator $\mathbf{1}\{\underline{r}>\underline{r}_0\}$ makes explicit the
+reserve cutoff below which stage-2 profit is zero.
+Stage~2 offers always use the buyers' posterior belief $\tilde{\psi}$.
+In \eqref{eq:Pi-low-total}, failure before $\underline{r}$ leaves
+$\tilde{\psi}=\psi$, so the cutoff is $v_{\psi}$.
+If the seller deviates upward, stage-2 payoffs use the updated posterior
+$\tilde{\psi}$ from \eqref{eq:belief-update}, which is strictly below $\psi$.
 
 \begin{claim}
   \label{claim:underline-r-star}
@@ -183,47 +212,53 @@ and failure reveals bids above $\underline{r}$.
 \label{subsec:proof-r-star}
 
 \begin{proof}
-Let $\underline{r}^{*}\in\arg\max\Pi(\cdot)$. We show that any other lower
+Let $\underline{r}^{*}\in\arg\max\Pi(\cdot)$.  We show that any other lower
 support $\underline{r}\neq\underline{r}^{*}$ cannot be optimal.
 
 \smallskip\noindent
 \textit{Downward deviation.}
-If $\underline{r}>\underline{r}^{*}$, stage-2 buyers keep the prior $\psi$,
-so \eqref{eq:Pi-low-total} is exact and
-$\Pi(\underline{r}^{*})>\Pi(\underline{r})$.
+If $\underline{r}>\underline{r}^{*}$, failure still occurs before $\underline{r}$,
+so the posterior remains $\tilde{\psi}=\psi$ and
+\eqref{eq:Pi-low-total} is exact, so $\Pi(\underline{r}^{*})>\Pi(\underline{r})$.
 
 \smallskip\noindent
 \textit{Upward deviation.}
-If $\underline{r}<\underline{r}^{*}$, let
-$\tilde{\psi}(\beta(v))\equiv
-\psi(1-\rho(\beta(v)))/(1-\psi\rho(\beta(v)))$ as in \eqref{eq:belief-update}.
-The failure branch from announcing $\underline{r}^{*}$ is
+If $\underline{r}<\underline{r}^{*}$, announce $\underline{r}^{*}$ and write
+$z\equiv\beta^{-1}(\underline{r})$ and $z^{*}\equiv\beta^{-1}(\underline{r}^{*})$.
+
+\smallskip\noindent
+\emph{Case 1: $\underline{r}^{*}>\underline{r}>\underline{r}_0$.}
+Then $z>v_{\psi}$ and $z^{*}>z$.
+True failure profit is
 \begin{align}
-  &\delta N (c_H - c_L)
-    \int_{c_L}^{\beta^{-1}(\underline{r})}
-      1 - \frac{F\!\bigl(\frac{c_H - \psi c_L}{1 - \psi}\bigr)}{F(v)}
-      \, dF(v)^{N}
+  \Pi_{\text{fail}}^{\text{true}}
+  &= \mathbf{1}\{\underline{r}>\underline{r}_0\}\,
+    \delta N (c_H - c_L)\,
+    \bigl(F(z) - F(v_{\psi})\bigr)\,
+    F(z)^{N-1}
   \notag\\
-  &\quad + \delta N (c_H - c_L)
-    \int_{\beta^{-1}(\underline{r})}^{\beta^{-1}(\underline{r}^{*})}
-      1 - \frac{
-        F\!\bigl(
-          \frac{c_H - \tilde{\psi}(\beta(v)) c_L}
-               {1 - \tilde{\psi}(\beta(v))}
-        \bigr)
-      }{F(v)}
-      \, dF(v)^{N}.
+  &\quad + \delta (c_H - c_L)
+    \int_{z}^{z^{*}} dF(v)^{N}
+    + \delta (N-1) (c_H - c_L)
+    \int_{z}^{z^{*}}
+      \left(1 - \frac{F\bigl(v_{\rho}(v)\bigr)}{F(v)}\right)\, dF(v)^{N},
   \label{eq:Pi-true-fail}
 \end{align}
-The success branch is the same as in \eqref{eq:profit-success} with
-$\underline{r}^{*}$ in place of $\underline{r}$.
-For $v\in[\beta^{-1}(\underline{r}),\beta^{-1}(\underline{r}^{*})]$,
-$\tilde{\psi}(\beta(v))<\psi$, so
-$F\!\bigl(\frac{c_H-\tilde{\psi}(\beta(v))c_L}{1-\tilde{\psi}(\beta(v))}\bigr)
-<F\!\bigl(\frac{c_H-\psi c_L}{1-\psi}\bigr)$
-and the failure branch above exceeds the failure term in
-$\Pi(\underline{r}^{*})$. Hence announcing $\underline{r}^{*}$ yields profit
-at least $\Pi(\underline{r}^{*})>\Pi(\underline{r})$.
+where the first term is $\Pi_{\text{fail}}$ and
+$v_{\rho}(v)$ is the $c_H$-offer cutoff with belief
+$\tilde{\psi}(\beta(v))$ on $(z,z^{*}]$.
+On $(z,z^{*}]$, $\tilde{\psi}(\beta(v))<\psi$, so
+$v_{\rho}(v)<v_{\psi}<z<z^{*}$ and the last two terms are strictly positive.
+The failure term in $\Pi(\underline{r}^{*})$ uses $v_{\psi}$ up to $z^{*}$, so
+the updated-belief block strictly exceeds its contribution.
+Success profit at $\underline{r}^{*}$ is unchanged, hence
+$\Pi_{\text{fail}}^{\text{true}}>\Pi(\underline{r}^{*})>\Pi(\underline{r})$.
+
+\smallskip\noindent
+\emph{Case 2: $\underline{r}^{*}>\underline{r}$ but $\underline{r}\le\underline{r}_0$.}
+Then $\mathbf{1}\{\underline{r}>\underline{r}_0\}=0$ and $\Pi_{\text{fail}}=0$.
+If $\underline{r}^{*}>\underline{r}_0$, the integrals over $(z,z^{*}]$ in
+\eqref{eq:Pi-true-fail} are positive; otherwise compare success profit only.
 
 \smallskip\noindent
 \textit{Conclusion.}
