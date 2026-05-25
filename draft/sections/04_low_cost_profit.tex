@@ -46,34 +46,45 @@ Write
   z\equiv \beta^{-1}(\underline{r})
   = \frac{\underline{r}-\delta\psi c_L}{1-\delta\psi}.
 \]
-The failure payoff is positive only when the failure-region upper bound $z$
-exceeds the stage-2 offer cutoff $v_{\psi}$.  The threshold reserve solves
-$z=v_{\psi}$:
+By \eqref{eq:second-stage-threshold}, a selected bidder offers $c_H$ only if
+$v\ge v_{\psi}$.
+Conditional on $v_{\max}\le z$, this requires $z\ge v_{\psi}$, so
+\eqref{eq:profit-fail-cond} is positive if and only if
+\begin{equation}
+  z>v_{\psi}
+  \quad\Longleftrightarrow\quad
+  F(z)>F(v_{\psi})
+  \quad\Longleftrightarrow\quad
+  1-\frac{F(v_{\psi})}{F(z)}>0.
+  \label{eq:z-gt-vpsi}
+\end{equation}
+The reserve threshold that makes $z=v_{\psi}$ is
 \begin{equation}
   \underline{r}_0
   \equiv
   \delta\psi c_L
   + (1-\delta\psi)\frac{c_H-\psi c_L}{1-\psi}
   =
-  \frac{(1-\delta\psi)c_H-\psi(1-\delta)c_L}{1-\psi}.
+  \frac{(1-\delta\psi)c_H-\psi(1-\delta)c_L}{1-\psi},
+  \qquad
+  \text{so}\quad
+  \underline{r}>\underline{r}_0
+  \quad\Longleftrightarrow\quad
+  z>v_{\psi}.
   \label{eq:failure-positive-cutoff}
 \end{equation}
-\noindent
-\textit{Remark.}
-The cutoff $\underline{r}_0$ need not lie below the top of the value support.
-Economically, if buyers place sufficiently high prior probability on the
-low-cost type, their cutoff for offering $c_H$ is so high that even the largest
-feasible failed-auction value may not trigger a $c_H$ offer.
-Indeed,
-\begin{equation*}
-  \underline{r}_0<1
-  \quad\Longleftrightarrow\quad
-  \psi
-  <
-  \frac{1-c_H}{1-c_L-\delta(c_H-c_L)}.
-\end{equation*}
-If this condition fails, then $\underline{r}_0\ge1$ and the failure-stage
-payoff is zero for every feasible reserve $\underline{r}\le1$.
+When $\underline{r}>\underline{r}_0$, failure leaves some values in
+$[v_{\psi},z]$, so a selected bidder may have $v\ge v_{\psi}$ and offer $c_H$,
+and stage-2 revenue is possible.\footnote{%
+  The cutoff $\underline{r}_0$ need not lie below the top of the value support.
+  If buyers place sufficiently high prior probability on the low-cost type,
+  their cutoff for offering $c_H$ is so high that even the largest feasible
+  failed-auction value may not trigger a $c_H$ offer.
+  Indeed,
+  $\underline{r}_0<1$ if and only if
+  $\psi<(1-c_H)/\bigl(1-c_L-\delta(c_H-c_L)\bigr)$;
+  if not, then $\underline{r}_0\ge1$ and $\Pi_{\text{fail}}=0$ for every feasible
+  reserve $\underline{r}\le1$.}
 Thus $\Pi_{\text{fail}}=0$ for $\underline{r}\le \underline{r}_0$.
 For $\underline{r}>\underline{r}_0$, i.i.d.\ values and
 \eqref{eq:fail-prob} give
@@ -90,9 +101,9 @@ For $\underline{r}>\underline{r}_0$, i.i.d.\ values and
   \label{eq:profit-fail}
 \end{equation}
 Raising $\underline{r}$ makes stage~1 failure more likely because
-$F\bigl((\underline{r}-\delta\psi c_L)/(1-\delta\psi)\bigr)^{N}$ increases.
-Above $\underline{r}_0$, it also makes it more likely that a selected bidder has
-value above the stage-2 offer cutoff.
+$F(z)^{N}$ increases, and for $\underline{r}>\underline{r}_0$ it also raises
+the probability in \eqref{eq:profit-fail-cond} that a selected bidder offers
+$c_H$.
 
 \subsection{When the auction succeeds}
 \label{subsec:profit-success}
