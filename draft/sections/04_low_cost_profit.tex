@@ -227,13 +227,11 @@ If $\underline{r}<\underline{r}^{*}$, announce $\underline{r}^{*}$ and write
 $z\equiv\beta^{-1}(\underline{r})$ and $z^{*}\equiv\beta^{-1}(\underline{r}^{*})$.
 
 \smallskip\noindent
-\emph{Case 1: $\underline{r}^{*}>\underline{r}>\underline{r}_0$.}
-Then $z>v_{\psi}$ and $z^{*}>z$.
+\emph{Case 1: $\underline{r}^{*}>\underline{r}>\underline{r}_0$, so $z^{*}>z>v_{\psi}$.}
 True failure profit is
 \begin{align}
   \Pi_{\text{fail}}^{\text{true}}
-  &= \mathbf{1}\{\underline{r}>\underline{r}_0\}\,
-    \delta N (c_H - c_L)\,
+  &= \delta N (c_H - c_L)\,
     \bigl(F(z) - F(v_{\psi})\bigr)\,
     F(z)^{N-1}
   \notag\\
@@ -244,21 +242,41 @@ True failure profit is
       \left(1 - \frac{F\bigl(v_{\rho}(v)\bigr)}{F(v)}\right)\, dF(v)^{N},
   \label{eq:Pi-true-fail}
 \end{align}
-where the first term is $\Pi_{\text{fail}}$ and
-$v_{\rho}(v)$ is the $c_H$-offer cutoff with belief
-$\tilde{\psi}(\beta(v))$ on $(z,z^{*}]$.
-On $(z,z^{*}]$, $\tilde{\psi}(\beta(v))<\psi$, so
-$v_{\rho}(v)<v_{\psi}<z<z^{*}$ and the last two terms are strictly positive.
-The failure term in $\Pi(\underline{r}^{*})$ uses $v_{\psi}$ up to $z^{*}$, so
-the updated-belief block strictly exceeds its contribution.
+where $v_{\rho}(v)$ is the $c_H$-offer cutoff with posterior belief
+$\tilde{\psi}(\beta(v))$ on $(z,z^{*}]$:
+\[
+  v_{\rho}(v)
+  \equiv \frac{c_H-\tilde{\psi}(\beta(v))\,c_L}{1-\tilde{\psi}(\beta(v))}
+  = \frac{(1-\psi\rho(\beta(v)))c_H-\psi(1-\rho(\beta(v)))c_L}{1-\psi}.
+\]
+On $(z,z^{*}]$, $\tilde{\psi}(\beta(v))<\psi$ and $v_{\rho}(v)<v_{\psi}$.
+The first line of \eqref{eq:Pi-true-fail} is $\Pi_{\text{fail}}(\underline{r})$
+from \eqref{eq:profit-fail-closed}.
+The failure term in $\Pi(\underline{r}^{*})$ is \eqref{eq:profit-fail} with
+$z^{*}$ in place of $z$; splitting \eqref{eq:profit-fail} at $z$ into
+$[v_{\psi},z]$ and $(z,z^{*}]$ and subtracting from \eqref{eq:Pi-true-fail}
+cancels the $\int_{z}^{z^{*}} dF(v)^{N}$ terms and gives
+\[
+  \Pi_{\text{fail}}^{\text{true}} - \Pi_{\text{fail}}(\underline{r}^{*})
+  = \delta (N-1) (c_H - c_L)
+    \int_{z}^{z^{*}}
+      \frac{F(v_{\psi}) - F\bigl(v_{\rho}(v)\bigr)}{F(v)}\,
+      dF(v)^{N}
+  > 0
+\]
+for $N\ge 2$, since $v_{\rho}(v)<v_{\psi}$ on $(z,z^{*}]$.
+Hence $\Pi_{\text{fail}}^{\text{true}}>\Pi_{\text{fail}}(\underline{r}^{*})$.
 Success profit at $\underline{r}^{*}$ is unchanged, hence
 $\Pi_{\text{fail}}^{\text{true}}>\Pi(\underline{r}^{*})>\Pi(\underline{r})$.
 
 \smallskip\noindent
 \emph{Case 2: $\underline{r}^{*}>\underline{r}$ but $\underline{r}\le\underline{r}_0$.}
-Then $\mathbf{1}\{\underline{r}>\underline{r}_0\}=0$ and $\Pi_{\text{fail}}=0$.
+Then $\mathbf{1}\{\underline{r}>\underline{r}_0\}=0$ and $\Pi_{\text{fail}}=0$ at
+$\underline{r}$.
 If $\underline{r}^{*}>\underline{r}_0$, the integrals over $(z,z^{*}]$ in
-\eqref{eq:Pi-true-fail} are positive; otherwise compare success profit only.
+\eqref{eq:Pi-true-fail} are positive and
+$\Pi_{\text{fail}}^{\text{true}}>\Pi_{\text{fail}}(\underline{r}^{*})=0$; otherwise
+compare success profit only.
 
 \smallskip\noindent
 \textit{Conclusion.}

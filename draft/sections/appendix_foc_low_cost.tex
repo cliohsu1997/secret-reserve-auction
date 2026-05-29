@@ -1,140 +1,156 @@
 \section{FOC for \texorpdfstring{$\underline{r}^{*}$}{underline r star}}
 \label{app:foc-low}
 
-This appendix derives \eqref{eq:FOC-low-simplified} from \eqref{eq:Pi-low-total}
-on the interior region where $\underline{r}>\underline{r}_0$ in
-\eqref{eq:Pi-low-total}.
+This appendix derives \eqref{eq:FOC-low-simplified} from \eqref{eq:Pi-low-total}.
+Write $z\equiv\beta^{-1}(\underline{r})$ and $v_{\psi}$ from \eqref{eq:v-psi-def}.
+Total profit splits into the failure and success components
+\eqref{eq:profit-fail-closed} and \eqref{eq:profit-success}:
+\begin{equation}
+  \Pi(\underline{r})
+  = \mathbf{1}\{\underline{r}>\underline{r}_0\}\,
+    \Pi_{\text{fail}}(\underline{r})
+    + \Pi_{\text{succ}}(\underline{r}),
+  \label{eq:Pi-low-split}
+\end{equation}
+where $\Pi_{\text{fail}}=0$ for $\underline{r}\le\underline{r}_0$.
+Differentiating \eqref{eq:Pi-low-split} (holding fixed the region
+$\underline{r}>\underline{r}_0$ where the failure formula applies) gives
+\begin{equation}
+  \frac{\mathrm d\Pi(\underline{r})}{\mathrm d\underline{r}}
+  = \mathbf{1}\{\underline{r}>\underline{r}_0\}\,
+    \frac{\mathrm d\Pi_{\text{fail}}}{\mathrm d\underline{r}}
+    + \frac{\mathrm d\Pi_{\text{succ}}}{\mathrm d\underline{r}}.
+  \label{eq:dPi-total}
+\end{equation}
 
-\subsection{Derivative of the failure-region term}
+\subsection{Derivative of \texorpdfstring{$\Pi_{\text{fail}}$}{Pi fail}}
 \label{subsec:deriv-fail}
 
+For $\underline{r}>\underline{r}_0$, $\Pi_{\text{fail}}$ is
+\eqref{eq:profit-fail-closed}.
+Since $z=(\underline{r}-\delta\psi c_L)/(1-\delta\psi)$,
+$\mathrm dz/\mathrm d\underline{r}=1/(1-\delta\psi)$.
+Differentiating,
 \begin{align}
-  &\frac{d}{d\underline{r}}
+  \frac{\mathrm d\Pi_{\text{fail}}}{\mathrm d\underline{r}}
+  &= \frac{d}{d\underline{r}}
     \left[
-      \delta N (c_H - c_L)
-      \times \left(
-        F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-        - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
-      \right)
-      F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-1}
+      \delta N (c_H - c_L)\,
+      \bigl(F(z) - F(v_{\psi})\bigr)\,
+      F(z)^{N-1}
     \right]
   \notag\\
-  =&\; \frac{1}{1 - \delta \psi}
-    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-1}
-  \notag\\
-  &\quad + (N-1) \frac{1}{1 - \delta \psi}
-    \left(
-      F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-      - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
-    \right)
-    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-2}
-    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-  \notag\\
-  =&\; \frac{1}{1 - \delta \psi}
-    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-2}
-    \Biggl[
-      N F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-      - (N-1) F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
-    \Biggr].
+  &= \delta N (c_H - c_L)\,
+    \frac{1}{1 - \delta \psi}\,
+    f(z)\, F(z)^{N-2}
+    \Bigl[
+      N F(z)
+      - (N-1) F(v_{\psi})
+    \Bigr].
   \label{eq:deriv-fail}
 \end{align}
 
-\subsection{Simplifying the double integral}
-\label{subsec:double-int}
+\subsection{Derivative of \texorpdfstring{$\Pi_{\text{succ}}$}{Pi succ}}
+\label{subsec:deriv-succ}
 
+Write $\Pi_{\text{succ}}$ as in \eqref{eq:profit-success}:
+\begin{equation}
+  \Pi_{\text{succ}}
+  = N \Biggl\{
+    (\underline{r} - c_L) F(\underline{r})^{N-1}
+      \bigl(1 - F(z)\bigr)
+    + \int_{z}^{1}
+      \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
+      \, dF(v)
+  \Biggr\}.
+  \label{eq:Pi-succ-appendix}
+\end{equation}
+The outer bracket and the double integral are differentiated separately.
+
+\paragraph{Double integral.}
+Integration by parts gives
 \begin{align}
-  &\int_{\beta^{-1}(\underline{r})}^{1}
+  &\int_{z}^{1}
     \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
     \, dF(v)
   \notag\\
-  =&\; \left[
-      F(v) \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
-    \right]_{\beta^{-1}(\underline{r})}^{1}
-    - \int_{\beta^{-1}(\underline{r})}^{1}
-      F(v)(v - c_L)\, dF(v)^{N-1}
-  \notag\\
   =&\; \int_{\underline{r}}^{1} (s - c_L)\, dF(s)^{N-1}
-    - F\bigl(\beta^{-1}(\underline{r})\bigr)
-      \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+    - F(z)
+      \int_{\underline{r}}^{z}
         (s - c_L)\, dF(s)^{N-1}
-    - \int_{\beta^{-1}(\underline{r})}^{1}
+    - \int_{z}^{1}
       F(v)(v - c_L)\, dF(v)^{N-1}.
   \label{eq:double-int-parts}
 \end{align}
-
-\paragraph{Derivative of the first term.}
+Differentiating term by term yields \eqref{eq:deriv-int1}--\eqref{eq:deriv-int3}
+and the collapsed form
 \begin{equation}
   \frac{d}{d\underline{r}}
     \int_{\underline{r}}^{1} (s - c_L)\, dF(s)^{N-1}
   = -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r}).
   \label{eq:deriv-int1}
 \end{equation}
-
-\paragraph{Derivative of the second term.}
 \begin{align}
   &\frac{d}{d\underline{r}}
     \left(
-      F\bigl(\beta^{-1}(\underline{r})\bigr)
-      \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+      F(z)
+      \int_{\underline{r}}^{z}
         (s - c_L)\, dF(s)^{N-1}
     \right)
   \notag\\
-  =&\; f\bigl(\beta^{-1}(\underline{r})\bigr)
-    \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
-    \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+  =&\; f(z)\,
+    \frac{\mathrm dz}{\mathrm d\underline{r}}
+    \int_{\underline{r}}^{z}
       (s - c_L)\, dF(s)^{N-1}
   \notag\\
-  &\quad + (N-1) F\bigl(\beta^{-1}(\underline{r})\bigr)
+  &\quad + (N-1) F(z)
     \Bigl[
-      \bigl(\beta^{-1}(\underline{r}) - c_L\bigr)
-        F\bigl(\beta^{-1}(\underline{r})\bigr)^{N-2}
-        f\bigl(\beta^{-1}(\underline{r})\bigr)
-        \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
+      (z - c_L) F(z)^{N-2} f(z)\,
+        \frac{\mathrm dz}{\mathrm d\underline{r}}
       - (\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
     \Bigr].
   \label{eq:deriv-int2}
 \end{align}
-
-\paragraph{Derivative of the third term.}
 \begin{equation}
   \frac{d}{d\underline{r}}
-    \int_{\beta^{-1}(\underline{r})}^{1}
+    \int_{z}^{1}
       F(v)(v - c_L)\, dF(v)^{N-1}
-  = -\frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
-    (N-1)\bigl(\beta^{-1}(\underline{r}) - c_L\bigr)
-    F\bigl(\beta^{-1}(\underline{r})\bigr)^{N-1}
-    f\bigl(\beta^{-1}(\underline{r})\bigr).
+  = -\frac{\mathrm dz}{\mathrm d\underline{r}}
+    (N-1)(z - c_L) F(z)^{N-1} f(z).
   \label{eq:deriv-int3}
 \end{equation}
-
-The derivative of the double integral is therefore
-\begin{equation}
-  -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
-    \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
-  - f\bigl(\beta^{-1}(\underline{r})\bigr)
+Combining \eqref{eq:deriv-int1}--\eqref{eq:deriv-int3} gives
+\begin{align}
+  &\frac{\mathrm d}{\mathrm d\underline{r}}
+    \int_{z}^{1}
+    \int_{\underline{r}}^{v} (s - c_L)\, dF(s)^{N-1}
+    \, dF(v)
+  \notag\\
+  =&\; -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
+    \bigl(1 - F(z)\bigr)
+  \notag\\
+  &\quad - f(z)\,
     \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
-    \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
+    \int_{\underline{r}}^{z}
       (s - c_L)\, dF(s)^{N-1}.
   \label{eq:deriv-double-int}
-\end{equation}
+\end{align}
 
-\paragraph{Derivative of the bracket term.}
+\paragraph{Bracket term.}
 \begin{align}
   &\frac{d}{d\underline{r}}
     \left[
       (\underline{r} - c_L) F(\underline{r})^{N-1}
-        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
+        \bigl(1 - F(z)\bigr)
     \right]
   \notag\\
   =&\; \Biggl[
     \begin{aligned}[t]
-      &F(\underline{r})\bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) \\
+      &F(\underline{r})\bigl(1 - F(z)\bigr) \\
       &\quad + (N-1)(\underline{r} - c_L)
-        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) f(\underline{r}) \\
+        \bigl(1 - F(z)\bigr) f(\underline{r}) \\
       &\quad - (\underline{r} - c_L) F(\underline{r})
-        f\bigl(\beta^{-1}(\underline{r})\bigr)
+        f(z)\,
         \frac{1}{1 - \delta \psi}
     \end{aligned}
   \Biggr]
@@ -142,47 +158,112 @@ The derivative of the double integral is therefore
   \label{eq:deriv-bracket}
 \end{align}
 
+Multiplying \eqref{eq:deriv-bracket} and \eqref{eq:deriv-double-int} by $N$
+gives $\mathrm d\Pi_{\text{succ}}/\mathrm d\underline{r}$.
+The $(N-1)(\underline{r}-c_L)$ terms cancel, leaving
+\begin{align}
+  \frac{\mathrm d\Pi_{\text{succ}}}{\mathrm d\underline{r}}
+  &= N F(\underline{r})^{N-2}
+    \Bigl[
+      F(\underline{r})\bigl(1 - F(z)\bigr)
+      - (\underline{r} - c_L) F(\underline{r})\,
+        f(z)\,
+        \frac{\mathrm dz}{\mathrm d\underline{r}}
+    \Bigr]
+  \notag\\
+  &\quad - N f(z)\,
+    \frac{\mathrm dz}{\mathrm d\underline{r}}
+    \int_{\underline{r}}^{z}
+      (s - c_L)\, dF(s)^{N-1}.
+  \label{eq:deriv-succ-collapsed}
+\end{align}
+
 \subsection{Full FOC and simplification}
 \label{subsec:foc-full}
 
-Taken together, $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ is
+Substituting \eqref{eq:deriv-fail} and \eqref{eq:deriv-succ-collapsed} into
+\eqref{eq:dPi-total} and setting $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$
+at $\underline{r}=\underline{r}^{*}$ gives
 \begin{align}
   0
-  &= \delta N (c_H - c_L)
-    \frac{1}{1 - \delta \psi}
-    f\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-    F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)^{N-2}
-    \notag\\
-  &\quad \times \left[
-      N F\!\left(\frac{\underline{r} - \delta \psi c_L}{1 - \delta \psi}\right)
-      - (N-1) F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
-    \right]
+  &= \mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}\,
+    \delta N (c_H - c_L)\,
+    \frac{1}{1 - \delta \psi}\,
+    f(z^{*})\, F(z^{*})^{N-2}
+    \Bigl[
+      N F(z^{*})
+      - (N-1) F(v_{\psi})
+    \Bigr]
   \notag\\
-  &\quad + N \Biggl[
-    \begin{aligned}[t]
-      &F(\underline{r})\bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) \\
-      &\quad + (N-1)(\underline{r} - c_L)
-        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr) f(\underline{r}) \\
-      &\quad - (\underline{r} - c_L) F(\underline{r})
-        f\bigl(\beta^{-1}(\underline{r})\bigr)
-        \frac{1}{1 - \delta \psi}
-    \end{aligned}
-  \Biggr]
-  F(\underline{r})^{N-2}
+  &\quad + N F(\underline{r}^{*})^{N-2}
+    \Bigl[
+      F(\underline{r}^{*})\bigl(1 - F(z^{*})\bigr)
+      - (\underline{r}^{*} - c_L) F(\underline{r}^{*})\,
+        f(z^{*})\,
+        \frac{\mathrm dz}{\mathrm d\underline{r}}
+    \Bigr]
   \notag\\
-  &\quad + N \Bigl[
-      -(N-1)(\underline{r} - c_L) F(\underline{r})^{N-2} f(\underline{r})
-        \bigl(1 - F(\beta^{-1}(\underline{r}))\bigr)
-  \notag\\
-  &\qquad - f\bigl(\beta^{-1}(\underline{r})\bigr)
-      \frac{d\beta^{-1}(\underline{r})}{d\underline{r}}
-      \int_{\underline{r}}^{\beta^{-1}(\underline{r})}
-        (s - c_L)\, dF(s)^{N-1}
-  \Bigr].
+  &\quad - N f(z^{*})\,
+    \frac{\mathrm dz}{\mathrm d\underline{r}}
+    \int_{\underline{r}^{*}}^{z^{*}}
+      (s - c_L)\, dF(s)^{N-1}.
   \label{eq:FOC-low-full}
 \end{align}
-The $(N-1)(\underline{r}-c_L)$ terms from the bracket and double-integral
-derivatives cancel. Solving the remaining expression for $\underline{r}-c_L$
-gives \eqref{eq:FOC-low-simplified}.  The outer factor $N$ in the failure
-derivative and the outer factor $N$ in the success derivative cancel in this
-final step.
+Collecting the $(\underline{r}^{*}-c_L)$ terms on the left and dividing by
+$N F(\underline{r}^{*})^{N-1} f(z^{*})\,\mathrm dz/\mathrm d\underline{r}$
+yields \eqref{eq:FOC-low-simplified}.
+Explicitly, \eqref{eq:FOC-low-full} is equivalent to
+\begin{equation}
+  N F(\underline{r}^{*})^{N-1} f(z^{*})\,
+    \frac{\mathrm dz}{\mathrm d\underline{r}}\,
+    (\underline{r}^{*} - c_L)
+  = N F(\underline{r}^{*})^{N-1}\bigl(1 - F(z^{*})\bigr)
+    - N f(z^{*})\,
+      \frac{\mathrm dz}{\mathrm d\underline{r}}
+      \int_{\underline{r}^{*}}^{z^{*}}
+        (s - c_L)\, dF(s)^{N-1}
+    + \mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}\,
+      \frac{\mathrm d\Pi_{\text{fail}}}{\mathrm d\underline{r}},
+  \label{eq:FOC-collect-r}
+\end{equation}
+so
+\begin{equation}
+  \underline{r}^{*} - c_L
+  = \frac{1 - F(z^{*})}{f(z^{*})\,\mathrm dz/\mathrm d\underline{r}}
+    + \mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}\,
+      \frac{
+        \mathrm d\Pi_{\text{fail}}/\mathrm d\underline{r}
+      }{
+        N F(\underline{r}^{*})^{N-1} f(z^{*})\,
+          \mathrm dz/\mathrm d\underline{r}
+      }
+    - \frac{1}{F(\underline{r}^{*})^{N-1}}
+      \int_{\underline{r}^{*}}^{z^{*}}
+        (s - c_L)\, dF(s)^{N-1},
+  \label{eq:FOC-unified}
+\end{equation}
+which is \eqref{eq:FOC-low-simplified}.
+Substituting \eqref{eq:FOC-unified} back into \eqref{eq:FOC-low-full} shows
+$\mathrm d\Pi(\underline{r}^{*})/\mathrm d\underline{r}=0$ if and only if
+\eqref{eq:FOC-low-simplified} holds:
+\begin{equation}
+  \frac{\mathrm d\Pi}{\mathrm d\underline{r}}
+  = -N F(\underline{r})^{N-1} f(z)\,
+    \frac{\mathrm dz}{\mathrm d\underline{r}}\,
+    \Bigl[
+      (\underline{r} - c_L) - \text{RHS of \eqref{eq:FOC-low-simplified}}
+    \Bigr].
+  \label{eq:FOC-residual}
+\end{equation}
+The first line on the right-hand side of \eqref{eq:FOC-low-simplified} comes
+from the success bracket in \eqref{eq:deriv-succ-collapsed} and is present
+whether or not $\underline{r}^{*}>\underline{r}_0$.
+The failure adjustment (second line) comes from \eqref{eq:deriv-fail}.
+The integral is the success double-integral term.
+
+\paragraph{Algebraic check.}
+When $\mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}=1$, all three lines
+contribute.
+When $\mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}=0$,
+\eqref{eq:FOC-low-simplified} reduces to the first-order condition from
+$\mathrm d\Pi_{\text{succ}}/\mathrm d\underline{r}=0$ alone.

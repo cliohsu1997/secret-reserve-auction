@@ -11,38 +11,30 @@ resulting indifference condition.
 \subsection{Optimal lower support}
 \label{sec:foc-low}
 
-The lower support $\underline{r}^{*}$ maximizes $\Pi(\underline{r})$ in
-\eqref{eq:Pi-low-total}.
-For an interior maximizer with
-$\underline{r}^{*}>\underline{r}_0$ from
-\eqref{eq:failure-positive-cutoff}, $\mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}=1$ in
-\eqref{eq:Pi-low-total}.
-Imposing $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ and rearranging
-yields the first-order condition
+Subsection~\ref{subsec:total-profit} and Claim~\ref{claim:underline-r-star} identify
+$\underline{r}^{*}$ as an argmax of $\Pi(\cdot)$ in \eqref{eq:Pi-low-total}.
+Write $z^{*}\equiv\beta^{-1}(\underline{r}^{*})$ as in \eqref{eq:z-def}.
+Imposing $\mathrm d\Pi(\underline{r})/\mathrm d\underline{r}=0$ at
+$\underline{r}=\underline{r}^{*}$ and rearranging yields
 \begin{align}
   \underline{r}^{*} - c_L
   &= (1 - \delta \psi)\,
-    \frac{
-      1 - F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
-    }{
-      f\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
-    }
+    \frac{1 - F(z^{*})}{f(z^{*})}
   \label{eq:FOC-low-simplified} \\
-  &\quad + \frac{1}{F(\underline{r}^{*})^{N-1}}
-    \Biggl[
-      \delta (c_H - c_L)\,
-      F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)^{N-2}
-      \Bigl(
-        N F\bigl(\beta^{-1}(\underline{r}^{*})\bigr)
-        - (N-1) F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
-      \Bigr)
-    \notag \\
-  &\qquad - \int_{\underline{r}^{*}}^{\beta^{-1}(\underline{r}^{*})}
-      (s - c_L)\, dF(s)^{N-1}
-    \Biggr].
+  &\quad + \mathbf{1}\{\underline{r}^{*}>\underline{r}_0\}\,
+    \frac{\delta (c_H - c_L)}{F(\underline{r}^{*})^{N-1}}\,
+    F(z^{*})^{N-2}
+    \Bigl(
+      N F(z^{*})
+      - (N-1) F(v_{\psi})
+    \Bigr)
+  \notag \\
+  &\quad - \frac{1}{F(\underline{r}^{*})^{N-1}}
+    \int_{\underline{r}^{*}}^{z^{*}}
+      (s - c_L)\, dF(s)^{N-1}.
   \notag
 \end{align}
-The derivation is in Appendix~\ref{app:foc-low}.
+Appendix~\ref{app:foc-low} verifies this from \eqref{eq:Pi-low-total}.
 
 \subsection{Profit and indifference on the mixing path}
 \label{sec:profit-above}
@@ -50,35 +42,23 @@ The derivation is in Appendix~\ref{app:foc-low}.
 In equilibrium the low-cost seller mixes a reserve
 $r\in[\underline{r},\bar{r}]$ with cdf $\rho$, where $\underline{r}$ and
 $\bar{r}$ are the endogenous bounds of the support.
-If the realized reserve exceeds $\underline{r}$, stage~1 failure can occur
-with $v_{\max}$ between $\beta^{-1}(\underline{r})$ and $\beta^{-1}(r)$; bids
-then reveal $\rho(\beta(v))>0$ and beliefs update via
-\eqref{eq:belief-update}.
-On the failure path, beliefs split at $\beta^{-1}(\underline{r})$: the prior
-$\psi$ applies below that threshold and
-$\tilde{\psi}(\beta(v))$ applies above it until $\beta^{-1}(r)$.
+If the realized reserve exceeds $\underline{r}$, write
+$z\equiv\beta^{-1}(\underline{r})$ and $z(r)\equiv\beta^{-1}(r)$ as in
+\eqref{eq:z-def}.
+Stage~1 failure can occur with $v_{\max}$ between $z$ and $z(r)$; bids then
+reveal $\rho(\beta(v))>0$ and beliefs update via \eqref{eq:belief-update}.
+On the failure path, the prior $\psi$ applies below $z$ and
+$\tilde{\psi}(\beta(v))$ applies above it until $z(r)$.
 Payoff from announcing $r>\underline{r}$ is
 \begin{align}
   \hat{\Pi}(r)
   &= \delta N (c_H - c_L)
     \Bigl[
-      \Bigl(
-        F\!\bigl(\beta^{-1}(\underline{r})\bigr)
-        - F\!\left(\frac{c_H - \psi c_L}{1 - \psi}\right)
-      \Bigr)
-      F\!\bigl(\beta^{-1}(\underline{r})\bigr)^{N-1}
-    \notag \\
-  &\quad + F\!\bigl(\beta^{-1}(r)\bigr)^{N}
-      - F\!\bigl(\beta^{-1}(\underline{r})\bigr)^{N}
-      - N \int_{\beta^{-1}(\underline{r})}^{\beta^{-1}(r)}
-        F\!\left(
-          \frac{
-            (1 - \psi \rho(\beta(v))) c_H
-            - \psi(1 - \rho(\beta(v))) c_L
-          }{1 - \psi}
-        \right)
-        \notag \\
-  &\qquad\qquad \times F(v)^{N-2}\, dF(v)
+      \bigl(F(z) - F(v_{\psi})\bigr)\, F(z)^{N-1}
+      + F\!\bigl(z(r)\bigr)^{N}
+      - F(z)^{N}
+      - N \int_{z}^{z(r)}
+        F\!\bigl(v_{\rho}(v)\bigr)\, F(v)^{N-2}\, dF(v)
     \Bigr]
   \notag \\
   &\quad + N \Bigl\{
